@@ -24,6 +24,11 @@ const userSchema = new Schema(
       minLength: 3,
       required: true,
     },
+    img: {
+      filename: String,
+      path: String,
+      url: String,
+    },
   },
   {
     timestamps: true,

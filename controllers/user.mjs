@@ -32,6 +32,35 @@ async function login(req, res) {
     res.status(400).json(err);
   }
 }
+//profile get
+const profile = async (req, res) => {
+  try {
+    const foundEntries = await User.find({});
+    res.status(200).json(foundEntries);
+  } catch (err) {
+    res.send(err).status(400);
+  }
+};
+//
+// const upload = async (req, res) => {
+//   try {
+//     const foundUser = await User.findByIdAndUpdate({});
+//     res.status(200).json(foundUser);
+//   } catch (err) {
+//     res.send(err).status(400);
+//   }
+// };
+// async function profile(req, res) {
+//   try {
+//     //query the DB to find a user with the email provided
+//     const user = await User.findOne({
+//       email: req.body.email,
+//       name: req.body.name,
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// }
 
 //-----------------helper function-----------------------
 function createJWT(user) {
@@ -42,4 +71,4 @@ function createJWT(user) {
     { expiresIn: "24h" }
   );
 }
-export default { create, login };
+export default { create, login, profile };

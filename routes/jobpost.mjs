@@ -8,7 +8,7 @@ import entryController from "../controllers/jobpost.mjs";
 router.get("/seed", entryController.seed);
 
 //index route
-//get /api/braindump
+//get /api/jobpost
 //note: if number of entries gets too LargestContentfulPaint//this may me updated to limit the number of returns
 
 router.get("/", entryController.getEntries);
@@ -22,7 +22,7 @@ router.post("/", entryController.addEntry);
 
 //delete route
 
-//****** delete /api/braindump/:id */
+//****** delete /api/jobpost/:id */
 router.delete("/:id", entryController.deleteEntry);
 
 //todo: get individual entry
