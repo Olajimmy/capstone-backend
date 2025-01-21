@@ -36,7 +36,7 @@ app.get("/*", (req, res) => {
 });
 
 //global error handling
-app.use((err, _req, resr, next) => {
+app.use((err, _req, res, next) => {
   res.status(500).send("there was an issue on the server");
 });
 

@@ -83,13 +83,39 @@ const deleteEntry = async (req, res) => {
   }
 };
 
-const editEntry = async (req, res) => {
-  console.log("editing");
+const saveEntry = async (req, res) => {
   try {
-    const editedEntry = await Job.findByIdAndUpdate(req.params.id);
+    // Retrieve the update data from the request body
+    const newValue = req.body;
+
+    // Find the job by ID and update it
+    const editedEntry = await Job.findByIdAndUpdate(
+      req.params.id, // The job ID from the URL params
+      newValue, // The data to update the job with (from req.body)
+      { new: true } // The `new` option returns the updated document
+    );
+
+    // If no entry was found and updated
+    if (!editedEntry) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    // Send the updated job post back as a response
     res.status(200).json(editedEntry);
+    console.log("Job post updated successfully:", editedEntry);
   } catch (err) {
-    res.send(err).status(400);
+    console.error("Error updating job post:", err);
+    res.status(400).send(err);
   }
 };
-export default { seed, getEntries, addEntry, deleteEntry, editEntry };
+
+// const editEntry = async (req, res) => {
+//   try {
+//     const editedEntry = await Job.findByIdAndUpdate(req.params.id);
+//     res.status(200).json(editedEntry);
+//     console.log("editing");
+//   } catch (err) {
+//     res.send(err).status(400);
+//   }
+// };
+export default { seed, getEntries, addEntry, deleteEntry, saveEntry };

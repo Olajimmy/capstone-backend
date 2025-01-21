@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const jobSchema = new mongoose.Schema(
   {
-    user: String, // this will be passed in from the user auth details
+    email: String, // this will be passed in from the user auth details
     jobType: {
       type: String,
       required: true,

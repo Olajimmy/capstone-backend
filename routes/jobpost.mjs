@@ -30,7 +30,7 @@ router.delete("/:id", entryController.deleteEntry);
 //todo: edit
 
 //edit route
-router.put("/:id", entryController.editEntry);
+router.put("/:id", entryController.saveEntry);
 //todo: delete
 
 export default router;
