@@ -28,9 +28,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    myFile: {
-      type: String,
-    },
   },
   {
     timestamps: true,
